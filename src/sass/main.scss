@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  --border-radius: 20px;
+  --title-font-size: 24px;
+  --title-line-height: 28px;
+  --border-width: 2px;
+  --border-color: blue;
+
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title-holder {
+  display: flex;
+  text-align: center;
+  span {
+    position: relative;
+    width: 100%;
+    min-height: calc(var(--border-radius) * 2);
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      border-top: var(--border-width) solid var(--border-color);
+      inset: 50% 0 0 0;
+    }
+  }
+
+  span.first {
+    &::before {
+      border-left: var(--border-width) solid var(--border-color);
+      border-top-left-radius: var(--border-radius);
+    }
+  }
+
+  span.last {
+    &::before {
+      border-right: var(--border-width) solid var(--border-color);
+      border-top-right-radius: var(--border-radius);
+    }
+  }
+
+  &.bottom {
+    span::before {
+      inset: 0 0 50% 0;
+      border-top: 0;
+      border-bottom: var(--border-width) solid var(--border-color);
+    }
+    span.first {
+      &::before {
+        border-top-left-radius: 0;
+        border-left: var(--border-width) solid var(--border-color);
+        border-bottom-left-radius: var(--border-radius);
+      }
+    }
+  
+    span.last {
+      &::before {
+        border-top-right-radius: 0;
+        border-right: var(--border-width) solid var(--border-color);
+        border-bottom-right-radius: var(--border-radius);
+      }
+    }
+  }
+
+  h2 {
+    flex-shrink: 0;
+    padding: 0 10px;
+    max-width: 80%;
+    font-size: var(--title-font-size);
+    line-height: var(--title-line-height);
+    align-self: center;
+  }
+}
+
+.content {
+  text-align: center;
+  border-left: var(--border-width) solid var(--border-color);
+  border-right: var(--border-width) solid var(--border-color);
+  padding: 15px;
+
+  h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
